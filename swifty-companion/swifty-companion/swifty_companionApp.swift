@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct swifty_companionApp: App {
+    @StateObject var homeViewModel = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(homeViewModel: homeViewModel)
         }
     }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FORTY_TWO_API</key>
+	<string>https://api.intra.42.fr/v2</string>
+	<key>FORTY_TWO_SECRET</key>
+	<string>$(FORTY_TWO_SECRET)</string>
+	<key>FORTY_TWO_UID</key>
+	<string>$(FORTY_TWO_UID)</string>
+</dict>
+</plist>
