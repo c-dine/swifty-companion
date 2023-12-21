@@ -25,16 +25,23 @@ struct ProjectsListView: View {
                             .foregroundStyle(Color(hex: "#00babc"))
                             .bold()
                         Spacer()
-                        if (project.final_mark == 0 || project.final_mark == nil) {
+                        if (project.final_mark == nil) {
                             Image(systemName: "clock")
                                 .foregroundStyle(.red)
-                        } else {
+                        } else if project.final_mark! > 50 {
                             HStack {
                                 Image(systemName: "checkmark")
                                 Text("\(project.final_mark!)")
                                     .bold()
                             }
                             .foregroundStyle(.green)
+                        } else {
+                            HStack {
+                                Image(systemName: "xmark")
+                                Text("\(project.final_mark!)")
+                                    .bold()
+                            }
+                            .foregroundStyle(.red)
                         }
                     }
                 }

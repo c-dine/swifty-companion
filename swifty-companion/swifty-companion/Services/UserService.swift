@@ -26,7 +26,6 @@ class UsersService {
             try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
             let _ = try await self.fetchUserCoalitionFromApi()
             let _ = try await self.fetchCursusInfoFromApi()
-            print(self.coalition!)
         } catch {
             throw error
         }
@@ -69,8 +68,6 @@ class UsersService {
             throw CustomError.runtimeError("No coalitions found.")
         }
         self.coalition = result.count == 2 ? result[1] : result[0]
-        print("coalition")
-        print(self.coalition!)
         return self.coalition!
     }
     
@@ -81,8 +78,6 @@ class UsersService {
             throw CustomError.runtimeError("No cursus found.")
         }
         self.cursus = result[0]
-        print("cursus")
-        print(self.cursus!)
         return result[0]
     }
     

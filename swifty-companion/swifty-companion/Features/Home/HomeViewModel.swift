@@ -11,6 +11,9 @@ class HomeViewModel: ObservableObject {
         
     func userExists(login: String) async -> Bool {
         do {
+            if (login.isEmpty) {
+                return false
+            }
             let _ = try await UsersService.shared.initAll(login: login.lowercased())
             return true
         } catch {

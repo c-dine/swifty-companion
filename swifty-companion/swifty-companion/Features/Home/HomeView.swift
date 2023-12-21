@@ -41,11 +41,11 @@ struct HomeView: View {
                         Task.init() {
                             isLoading.toggle()
                             let userExists = await homeViewModel.userExists(login: inputText)
-                            if (!inputText.isEmpty && userExists) {
+                            if (userExists) {
                                 openErrorSnackbar = false
                                 openUserDetails.toggle()
                             } else if (!inputText.isEmpty) {
-                                openErrorSnackbar.toggle()
+                                openErrorSnackbar = true
                             }
                             isLoading.toggle()
                         }
