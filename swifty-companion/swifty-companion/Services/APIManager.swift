@@ -21,7 +21,7 @@ class APIManager {
     )  async throws -> T {
         do {
             guard let url = URL(string: endpoint) else {
-                throw NSError(domain: "swifty-companion", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+                throw CustomError.runtimeError("Invalid URL")
             }
             var request = URLRequest(url: url)
             request.httpMethod = method
@@ -29,7 +29,6 @@ class APIManager {
                 try await self.refreshToken()
             }
             request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
-        
             let (data, response) = try await URLSession.shared.data(for: request)
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
                 try await self.refreshToken()
@@ -37,18 +36,16 @@ class APIManager {
             } else {
                 let decoder = JSONDecoder()
                 let decodedResponse = try decoder.decode(T.self, from: data)
-                print(decodedResponse)
                 return decodedResponse
             }
         } catch {
-            print(error)
-            throw NSError(domain: "swifty-companion", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed API call"])
+            throw error
         }
     }
         
     private func refreshToken() async throws {
         guard let url = URL(string: "\(self.apiUrl)/oauth/token") else {
-            throw NSError(domain: "swifty-companion", code: -1, userInfo: [NSLocalizedDescriptionKey: "Bad URL"])
+            throw CustomError.runtimeError("Bad URL.")
         }
         
         let uid: String = Bundle.main.infoDictionary?["FORTY_TWO_UID"] as? String ?? ""
@@ -66,7 +63,7 @@ class APIManager {
                 self.accessToken = accessToken
             }
         } catch {
-            throw NSError(domain: "swifty-companion", code: -1, userInfo: [NSLocalizedDescriptionKey: "Authentication error"])
+            throw CustomError.runtimeError("Authentication error")
         }
     }
 }

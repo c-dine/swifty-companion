@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841287CC2B34915100007F75 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841287CB2B34915100007F75 /* Color.swift */; };
+		841287CF2B34A88D00007F75 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841287CE2B34A88D00007F75 /* ProgressBarView.swift */; };
+		841287D12B34AB3900007F75 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841287D02B34AB3900007F75 /* Numbers.swift */; };
+		841287D32B34AEDD00007F75 /* UserDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841287D22B34AEDD00007F75 /* UserDetailsCardView.swift */; };
+		841287D52B34B0F400007F75 /* ProjectsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841287D42B34B0F400007F75 /* ProjectsListView.swift */; };
+		84128FD52B332B2A00D279F8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84128FD42B332B2A00D279F8 /* Errors.swift */; };
+		84128FDA2B33445300D279F8 /* ErrorSnackBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84128FD92B33445300D279F8 /* ErrorSnackBarView.swift */; };
 		84DDB3C72B2B5533005B8D7C /* swifty_companionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB3C62B2B5533005B8D7C /* swifty_companionApp.swift */; };
 		84DDB3C92B2B5533005B8D7C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB3C82B2B5533005B8D7C /* HomeView.swift */; };
 		84DDB3CB2B2B5534005B8D7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DDB3CA2B2B5534005B8D7C /* Assets.xcassets */; };
@@ -20,7 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841287CB2B34915100007F75 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		841287CE2B34A88D00007F75 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		841287D02B34AB3900007F75 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
+		841287D22B34AEDD00007F75 /* UserDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsCardView.swift; sourceTree = "<group>"; };
+		841287D42B34B0F400007F75 /* ProjectsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListView.swift; sourceTree = "<group>"; };
 		84128FD32B32FC3100D279F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84128FD42B332B2A00D279F8 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		84128FD92B33445300D279F8 /* ErrorSnackBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSnackBarView.swift; sourceTree = "<group>"; };
 		84DDB3C32B2B5533005B8D7C /* swifty-companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swifty-companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DDB3C62B2B5533005B8D7C /* swifty_companionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swifty_companionApp.swift; sourceTree = "<group>"; };
 		84DDB3C82B2B5533005B8D7C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -47,6 +61,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		841287CA2B34914600007F75 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				841287CB2B34915100007F75 /* Color.swift */,
+				841287D02B34AB3900007F75 /* Numbers.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		841287CD2B34A87B00007F75 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				841287CE2B34A88D00007F75 /* ProgressBarView.swift */,
+				841287D42B34B0F400007F75 /* ProjectsListView.swift */,
+				841287D22B34AEDD00007F75 /* UserDetailsCardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84128FD62B33441300D279F8 /* ErrorSnackBar */ = {
+			isa = PBXGroup;
+			children = (
+				84128FD92B33445300D279F8 /* ErrorSnackBarView.swift */,
+			);
+			path = ErrorSnackBar;
+			sourceTree = "<group>";
+		};
 		84DDB3BA2B2B5533005B8D7C = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +109,7 @@
 			children = (
 				84128FD32B32FC3100D279F8 /* Info.plist */,
 				84DDB3C62B2B5533005B8D7C /* swifty_companionApp.swift */,
+				841287CA2B34914600007F75 /* Utils */,
 				84DDB4002B2C98BE005B8D7C /* Models */,
 				84DDB3F02B2C63C8005B8D7C /* Services */,
 				84DDB3EF2B2C63B1005B8D7C /* Features */,
@@ -90,6 +132,7 @@
 		84DDB3EF2B2C63B1005B8D7C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				84128FD62B33441300D279F8 /* ErrorSnackBar */,
 				84DDB4052B2DDBD1005B8D7C /* UserDetails */,
 				84DDB3F22B2C6418005B8D7C /* Home */,
 			);
@@ -118,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				84DDB4012B2C98CF005B8D7C /* UserModel.swift */,
+				84128FD42B332B2A00D279F8 /* Errors.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +169,7 @@
 		84DDB4052B2DDBD1005B8D7C /* UserDetails */ = {
 			isa = PBXGroup;
 			children = (
+				841287CD2B34A87B00007F75 /* Views */,
 				84DDB4062B2DDBE1005B8D7C /* UserDetailsView.swift */,
 				84DDB4082B325983005B8D7C /* UserDetailsViewModel.swift */,
 			);
@@ -203,11 +248,18 @@
 			files = (
 				84DDB3FE2B2C8BB9005B8D7C /* UserService.swift in Sources */,
 				84DDB3FA2B2C7142005B8D7C /* APIManager.swift in Sources */,
+				841287CC2B34915100007F75 /* Color.swift in Sources */,
 				84DDB4042B2CABA4005B8D7C /* HomeViewModel.swift in Sources */,
 				84DDB3C92B2B5533005B8D7C /* HomeView.swift in Sources */,
 				84DDB4072B2DDBE1005B8D7C /* UserDetailsView.swift in Sources */,
 				84DDB4022B2C98CF005B8D7C /* UserModel.swift in Sources */,
+				84128FDA2B33445300D279F8 /* ErrorSnackBarView.swift in Sources */,
+				841287D12B34AB3900007F75 /* Numbers.swift in Sources */,
 				84DDB4092B325983005B8D7C /* UserDetailsViewModel.swift in Sources */,
+				841287D52B34B0F400007F75 /* ProjectsListView.swift in Sources */,
+				84128FD52B332B2A00D279F8 /* Errors.swift in Sources */,
+				841287CF2B34A88D00007F75 /* ProgressBarView.swift in Sources */,
+				841287D32B34AEDD00007F75 /* UserDetailsCardView.swift in Sources */,
 				84DDB3C72B2B5533005B8D7C /* swifty_companionApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,21 @@ import Foundation
 
 
 class UserDetailsViewModel: ObservableObject {
+        
+    func getUser() -> User {
+        return UsersService.shared.getCurrentUser()!
+    }
     
-    @Published var userService = UsersService()
+    func getCoalition() -> Coalition {
+        return UsersService.shared.getCoalition()!
+    }
+    
+    func getCursus() -> UserCursus {
+        return UsersService.shared.getCursus()!
+    }
+    
+    func getProjects() -> [ProjectEvaluation] {
+        return UsersService.shared.getProjects()
+    }
     
 }

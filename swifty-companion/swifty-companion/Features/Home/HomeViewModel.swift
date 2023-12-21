@@ -8,14 +8,13 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    
-    @Published var userService = UsersService()
-    
+        
     func userExists(login: String) async -> Bool {
         do {
-            let _ = try await userService.fetchUser(login: login)
+            let _ = try await UsersService.shared.initAll(login: login.lowercased())
             return true
         } catch {
+            print(error)
             return false
         }
     }

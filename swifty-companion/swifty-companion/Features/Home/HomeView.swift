@@ -10,16 +10,19 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject var homeViewModel: HomeViewModel
+    
     @State private var inputText = ""
     @State private var openUserDetails = false
+    @State private var openErrorSnackbar = false
     
     @StateObject var userDetailsViewModel = UserDetailsViewModel()
     
     var body: some View {
         NavigationStack {
             VStack {
-                Spacer()
                 
+                Spacer()
+                                                
                 Image(uiImage: UIImage(named: "42_Logo")!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -36,7 +39,10 @@ struct HomeView: View {
                     Task.init() {
                         let userExists = await homeViewModel.userExists(login: inputText)
                         if (!inputText.isEmpty && userExists) {
-                            openUserDetails = true
+                            openErrorSnackbar = false
+                            openUserDetails.toggle()
+                        } else if (!inputText.isEmpty) {
+                            openErrorSnackbar.toggle()
                         }
                     }
                 }
@@ -48,9 +54,16 @@ struct HomeView: View {
                 
                 Spacer()
             }
-           
         }
         .padding()
+        .overlay(alignment: .bottom) {
+            if (openErrorSnackbar) {
+                ErrorSnackBarView(message: "Login doesn't exist", actionText: "Close") {
+                    openErrorSnackbar.toggle()
+                }
+                Spacer()
+            }
+        }
     }
 }
 
