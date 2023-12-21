@@ -12,7 +12,7 @@ struct ProgressBarView: View {
     let barColor: Color
     let backgroundColor: Color
     let contentText: String
-    let height = 30.0
+    let height = 35.0
 
     var body: some View {
         GeometryReader { geometry in

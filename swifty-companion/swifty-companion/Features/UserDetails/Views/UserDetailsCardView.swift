@@ -24,7 +24,7 @@ struct UserDetailsCardView: View {
                 .foregroundStyle(.gray)
             
             HStack(spacing: 20) {
-                VStack(spacing: 20) {
+                VStack(spacing: 15) {
                     Image(systemName: "mappin.and.ellipse")
                     Image(systemName: "envelope.fill")
                     Image(systemName: "australsign")
@@ -32,7 +32,7 @@ struct UserDetailsCardView: View {
                 }
                 .foregroundStyle(Color(hex: coalition.color))
                 
-                VStack(alignment: .leading, spacing: 15) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("\(currentUser.location ?? "Unavailable")")
                     Text(currentUser.email ?? "Unknown")
                     Text("\(currentUser.wallet ?? 0)")

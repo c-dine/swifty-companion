@@ -14,6 +14,7 @@ struct HomeView: View {
     @State private var inputText = ""
     @State private var openUserDetails = false
     @State private var openErrorSnackbar = false
+    @State private var isLoading = false
     
     @StateObject var userDetailsViewModel = UserDetailsViewModel()
     
@@ -22,7 +23,7 @@ struct HomeView: View {
             VStack {
                 
                 Spacer()
-                                                
+                
                 Image(uiImage: UIImage(named: "42_Logo")!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -35,22 +36,30 @@ struct HomeView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
                 
-                
-                Button("Look up") {
-                    Task.init() {
-                        let userExists = await homeViewModel.userExists(login: inputText)
-                        if (!inputText.isEmpty && userExists) {
-                            openErrorSnackbar = false
-                            openUserDetails.toggle()
-                        } else if (!inputText.isEmpty) {
-                            openErrorSnackbar.toggle()
+                if !isLoading {
+                    Button("Look up") {
+                        Task.init() {
+                            isLoading.toggle()
+                            let userExists = await homeViewModel.userExists(login: inputText)
+                            if (!inputText.isEmpty && userExists) {
+                                openErrorSnackbar = false
+                                openUserDetails.toggle()
+                            } else if (!inputText.isEmpty) {
+                                openErrorSnackbar.toggle()
+                            }
+                            isLoading.toggle()
                         }
                     }
+                    .buttonStyle(.borderedProminent)
+                    .padding(.top, 30)
+                    .navigationDestination(isPresented: $openUserDetails) {
+                        UserDetailsView(userDetailsViewModel: userDetailsViewModel)
+                    }
                 }
-                .buttonStyle(.borderedProminent)
-                .padding(.top, 30)
-                .navigationDestination(isPresented: $openUserDetails) {
-                    UserDetailsView(userDetailsViewModel: userDetailsViewModel)
+                                
+                if isLoading {
+                    ProgressView()
+                        .padding()
                 }
                 
                 Spacer()
