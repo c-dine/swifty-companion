@@ -46,3 +46,35 @@ struct UserDetailsCardView: View {
         }
     }
 }
+
+struct AvatarView: View {
+    var link: String
+    
+    var body: some View {
+        AsyncImage(url: URL(string: link)) { phase in
+            switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                        .shadow(radius: 5)
+
+                case .failure:
+                    Image(systemName: "photo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                        .shadow(radius: 5)
+                        .foregroundColor(.gray)
+
+                default:
+                    ProgressView()
+            }
+        }
+    }
+}

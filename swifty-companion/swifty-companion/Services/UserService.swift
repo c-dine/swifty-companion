@@ -23,6 +23,7 @@ class UsersService {
         do {
             let _ = try await self.fetchUserFromApi(login: login)
             let _ = try await self.fetchProjectsFromApi()
+            try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
             let _ = try await self.fetchUserCoalitionFromApi()
             let _ = try await self.fetchCursusInfoFromApi()
             print(self.coalition!)

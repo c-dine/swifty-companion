@@ -32,7 +32,8 @@ struct HomeView: View {
                     Image(systemName: "magnifyingglass")
                     TextField("Enter student login...", text: $inputText)
                 }
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
                 
                 
                 Button("Look up") {
@@ -46,16 +47,15 @@ struct HomeView: View {
                         }
                     }
                 }
-                    .buttonStyle(.borderedProminent)
-                    .padding(.top, 30)
-                    .navigationDestination(isPresented: $openUserDetails) {
-                        UserDetailsView(userDetailsViewModel: userDetailsViewModel)
-                    }
+                .buttonStyle(.borderedProminent)
+                .padding(.top, 30)
+                .navigationDestination(isPresented: $openUserDetails) {
+                    UserDetailsView(userDetailsViewModel: userDetailsViewModel)
+                }
                 
                 Spacer()
             }
         }
-        .padding()
         .overlay(alignment: .bottom) {
             if (openErrorSnackbar) {
                 ErrorSnackBarView(message: "Login doesn't exist", actionText: "Close") {

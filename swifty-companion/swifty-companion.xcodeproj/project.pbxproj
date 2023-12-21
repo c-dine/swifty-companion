@@ -14,6 +14,7 @@
 		841287D52B34B0F400007F75 /* ProjectsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841287D42B34B0F400007F75 /* ProjectsListView.swift */; };
 		84128FD52B332B2A00D279F8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84128FD42B332B2A00D279F8 /* Errors.swift */; };
 		84128FDA2B33445300D279F8 /* ErrorSnackBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84128FD92B33445300D279F8 /* ErrorSnackBarView.swift */; };
+		84C2ED662B34DCB1002389A5 /* SkillsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2ED652B34DCB1002389A5 /* SkillsListView.swift */; };
 		84DDB3C72B2B5533005B8D7C /* swifty_companionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB3C62B2B5533005B8D7C /* swifty_companionApp.swift */; };
 		84DDB3C92B2B5533005B8D7C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB3C82B2B5533005B8D7C /* HomeView.swift */; };
 		84DDB3CB2B2B5534005B8D7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DDB3CA2B2B5534005B8D7C /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		84128FD32B32FC3100D279F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84128FD42B332B2A00D279F8 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		84128FD92B33445300D279F8 /* ErrorSnackBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSnackBarView.swift; sourceTree = "<group>"; };
+		84C2ED652B34DCB1002389A5 /* SkillsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsListView.swift; sourceTree = "<group>"; };
 		84DDB3C32B2B5533005B8D7C /* swifty-companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swifty-companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DDB3C62B2B5533005B8D7C /* swifty_companionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swifty_companionApp.swift; sourceTree = "<group>"; };
 		84DDB3C82B2B5533005B8D7C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				841287CE2B34A88D00007F75 /* ProgressBarView.swift */,
 				841287D42B34B0F400007F75 /* ProjectsListView.swift */,
+				84C2ED652B34DCB1002389A5 /* SkillsListView.swift */,
 				841287D22B34AEDD00007F75 /* UserDetailsCardView.swift */,
 			);
 			path = Views;
@@ -254,6 +257,7 @@
 				84DDB4072B2DDBE1005B8D7C /* UserDetailsView.swift in Sources */,
 				84DDB4022B2C98CF005B8D7C /* UserModel.swift in Sources */,
 				84128FDA2B33445300D279F8 /* ErrorSnackBarView.swift in Sources */,
+				84C2ED662B34DCB1002389A5 /* SkillsListView.swift in Sources */,
 				841287D12B34AB3900007F75 /* Numbers.swift in Sources */,
 				84DDB4092B325983005B8D7C /* UserDetailsViewModel.swift in Sources */,
 				841287D52B34B0F400007F75 /* ProjectsListView.swift in Sources */,

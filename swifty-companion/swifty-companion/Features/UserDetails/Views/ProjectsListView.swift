@@ -14,6 +14,11 @@ struct ProjectsListView: View {
     var body: some View {
         ScrollView {
             VStack {
+                
+                Text("Projects")
+                    .font(.title2)
+                    .padding(.bottom, 10)
+                
                 ForEach(projects, id: \.id) { project in
                     HStack {
                         Text(project.project?.name ?? "Unknown")
@@ -22,17 +27,18 @@ struct ProjectsListView: View {
                         Spacer()
                         if (project.final_mark == 0 || project.final_mark == nil) {
                             Image(systemName: "clock")
-                            .foregroundStyle(.red)
+                                .foregroundStyle(.red)
                         } else {
                             HStack {
                                 Image(systemName: "checkmark")
                                 Text("\(project.final_mark!)")
-                                .bold()
+                                    .bold()
                             }
                             .foregroundStyle(.green)
                         }
                     }
                 }
+                
             }
             .padding()
         }
