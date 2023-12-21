@@ -26,7 +26,10 @@ struct UserDetailsView: View {
                         image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: UIScreen.main.bounds.width)
+                            .frame(
+                                width: UIScreen.main.bounds.width,
+                                height: UIScreen.main.bounds.height
+                            )
                             .edgesIgnoringSafeArea(.all)
                     default:
                         EmptyView()
@@ -34,14 +37,18 @@ struct UserDetailsView: View {
             }
             
             VStack {
-                UserDetailsCardView(coalition: userDetailsViewModel.getCoalition(), currentUser: userDetailsViewModel.getUser())
-                
-                ProgressBarView(
-                    percentage: getPercentageFromLevel(level: userDetailsViewModel.getCursus().level!),
-                    barColor: Color(hex: userDetailsViewModel.getCoalition().color),
-                    backgroundColor: .black.opacity(0.6),
-                    contentText: "Level \(Int(userDetailsViewModel.getCursus().level!)) - \(Int(getPercentageFromLevel(level: userDetailsViewModel.getCursus().level!)))%"
-                )
+                ScrollView {
+                    VStack (alignment: .trailing) {
+                        UserDetailsCardView(coalition: userDetailsViewModel.getCoalition(), currentUser: userDetailsViewModel.getUser())
+                        
+                        ProgressBarView(
+                            percentage: getPercentageFromLevel(level: userDetailsViewModel.getCursus().level!),
+                            barColor: Color(hex: userDetailsViewModel.getCoalition().color),
+                            backgroundColor: .black.opacity(0.6),
+                            contentText: "Level \(Int(userDetailsViewModel.getCursus().level!)) - \(Int(getPercentageFromLevel(level: userDetailsViewModel.getCursus().level!)))%"
+                        )
+                    }
+                }
                 
                 TabView {
                     ProjectsListView(projects: userDetailsViewModel.getProjects())
@@ -53,8 +60,6 @@ struct UserDetailsView: View {
                 .onAppear {
                   setupAppearance()
                 }
-                
-                Spacer()
             }
             
         }

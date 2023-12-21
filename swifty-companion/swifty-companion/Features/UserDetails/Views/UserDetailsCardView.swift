@@ -76,5 +76,6 @@ struct AvatarView: View {
                     ProgressView()
             }
         }
+        .padding(.top, 25)
     }
 }
