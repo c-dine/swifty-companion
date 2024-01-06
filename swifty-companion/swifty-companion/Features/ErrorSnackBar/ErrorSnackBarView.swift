@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ErrorSnackBarView: View {
     let message: String
-    let actionText: String
+    let actionText: String?
     let action: () -> Void
 
     var body: some View {
@@ -19,11 +19,13 @@ struct ErrorSnackBarView: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
             Spacer()
-            Button(action: action) {
-                Text(actionText)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
+            if (actionText != nil) {
+                Button(action: action) {
+                    Text(actionText!)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                }
             }
         }
         .background(Color.red)

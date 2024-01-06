@@ -32,6 +32,7 @@ struct HomeView: View {
                 HStack {
                     Image(systemName: "magnifyingglass")
                     TextField("Enter student login...", text: $inputText)
+                        .disabled(!self.homeViewModel.networkWorks())
                 }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -50,18 +51,19 @@ struct HomeView: View {
                             isLoading.toggle()
                         }
                     }
+                    .disabled(!self.homeViewModel.networkWorks())
                     .buttonStyle(.borderedProminent)
                     .padding(.top, 30)
                     .navigationDestination(isPresented: $openUserDetails) {
                         UserDetailsView(userDetailsViewModel: userDetailsViewModel)
                     }
                 }
-                                
+
                 if isLoading {
                     ProgressView()
                         .padding()
                 }
-                
+
                 Spacer()
             }
         }
@@ -72,6 +74,10 @@ struct HomeView: View {
                 }
                 Spacer()
             }
+        }
+        
+        if (!self.homeViewModel.networkWorks()) {
+            ErrorSnackBarView(message: "Network error", actionText: nil) {}
         }
     }
 }
