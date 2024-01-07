@@ -42,10 +42,10 @@ struct UserDetailsView: View {
                         UserDetailsCardView(coalition: userDetailsViewModel.getCoalition(), currentUser: userDetailsViewModel.getUser())
                         
                         ProgressBarView(
-                            percentage: getPercentageFromLevel(level: userDetailsViewModel.getCursus().level!),
+                            percentage: getPercentageFromLevel(level: userDetailsViewModel.getCursus().level),
                             barColor: Color(hex: userDetailsViewModel.getCoalition().color),
                             backgroundColor: .black.opacity(0.6),
-                            contentText: "Level \(Int(userDetailsViewModel.getCursus().level!)) - \(Int(getPercentageFromLevel(level: userDetailsViewModel.getCursus().level!)))%"
+                            contentText: "Level \(Int(userDetailsViewModel.getCursus().level)) - \(Int(getPercentageFromLevel(level: userDetailsViewModel.getCursus().level)))%"
                         )
                     }
                 }

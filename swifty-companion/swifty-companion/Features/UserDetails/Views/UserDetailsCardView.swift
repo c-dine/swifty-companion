@@ -14,13 +14,13 @@ struct UserDetailsCardView: View {
     
     var body: some View {
         VStack {
-            AvatarView(link: currentUser.image!.link!)
-            Text("\(currentUser.first_name!) \(currentUser.last_name!)")
+            AvatarView(link: currentUser.image.link)
+            Text("\(currentUser.first_name) \(currentUser.last_name)")
                 .bold()
                 .font(.title3)
                 .padding(.top, 10)
                 .foregroundStyle(.white)
-            Text("\(currentUser.login!)")
+            Text("\(currentUser.login)")
                 .foregroundStyle(.gray)
             
             HStack(spacing: 20) {
@@ -31,12 +31,12 @@ struct UserDetailsCardView: View {
                     Image(systemName: "figure.pool.swim")
                 }
                 .foregroundStyle(Color(hex: coalition.color))
-                
+
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("\(currentUser.location ?? "Unavailable")")
-                    Text(currentUser.email ?? "Unknown")
-                    Text("\(currentUser.wallet ?? 0)")
-                    Text("\(currentUser.pool_month ?? "-") \(currentUser.pool_year ?? "-")")
+                    Text(currentUser.location ?? "Unavailable")
+                    Text(currentUser.email)
+                    Text("\(currentUser.wallet)")
+                    Text("\(currentUser.pool_month) \(currentUser.pool_year)")
                 }
                 .foregroundStyle(.white)
             }

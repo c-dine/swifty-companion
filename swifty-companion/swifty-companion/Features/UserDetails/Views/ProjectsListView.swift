@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProjectsListView: View {
     
-    let projects: [ProjectEvaluation]
+    let projects: [ProjectUser]
     
     var body: some View {
         ScrollView {
@@ -21,7 +21,7 @@ struct ProjectsListView: View {
                 
                 ForEach(projects, id: \.id) { project in
                     HStack {
-                        Text(project.project?.name ?? "Unknown")
+                        Text(project.project.name)
                             .foregroundStyle(Color(hex: "#00babc"))
                             .bold()
                         Spacer()

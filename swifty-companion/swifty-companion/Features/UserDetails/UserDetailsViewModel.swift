@@ -18,11 +18,11 @@ class UserDetailsViewModel: ObservableObject {
         return UsersService.shared.getCoalition()!
     }
     
-    func getCursus() -> UserCursus {
-        return UsersService.shared.getCursus()!
+    func getCursus() -> CursusUser {
+        return UsersService.shared.getCursus()
     }
     
-    func getProjects() -> [ProjectEvaluation] {
+    func getProjects() -> [ProjectUser] {
         return UsersService.shared.getProjects()
     }
     

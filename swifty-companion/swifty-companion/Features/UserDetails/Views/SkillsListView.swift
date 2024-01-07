@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SkillsListView: View {
     
-    let cursus: UserCursus
+    let cursus: CursusUser
     
     var body: some View {
         ScrollView {
@@ -19,11 +19,11 @@ struct SkillsListView: View {
                     .padding(.bottom, 10)
                 ForEach(cursus.skills, id: \.id) { skill in
                     HStack {
-                        Text(skill.name ?? "")
+                        Text(skill.name)
                             .foregroundStyle(Color(hex: "#00babc"))
                             .bold()
                         Spacer()
-                        Text("\(String(format: "%.2f", skill.level ?? 0))")
+                        Text("\(String(format: "%.2f", skill.level))")
                             .bold()
                     }
                 }

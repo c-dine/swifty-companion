@@ -12,8 +12,6 @@ class UsersService {
     
     private var currentUser: User? = nil
     private var coalition: Coalition? = nil
-    private var cursus: UserCursus? = nil
-    private var projects: [ProjectEvaluation] = []
     
     let apiUrl: String = Bundle.main.infoDictionary?["FORTY_TWO_API"] as? String ?? ""
 
@@ -22,10 +20,7 @@ class UsersService {
     func initAll(login: String) async throws {
         do {
             let _ = try await self.fetchUserFromApi(login: login)
-            let _ = try await self.fetchProjectsFromApi()
-            try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
             let _ = try await self.fetchUserCoalitionFromApi()
-            let _ = try await self.fetchCursusInfoFromApi()
         } catch {
             throw error
         }
@@ -41,24 +36,22 @@ class UsersService {
         return self.coalition
     }
     
-    func getCursus() -> UserCursus? {
-        return self.cursus
+    func getCursus() -> CursusUser {
+        return self.currentUser!.cursus_users.first(where: { $0.end_at == nil })!
     }
     
-    func getProjects() -> [ProjectEvaluation] {
-        return self.projects
+    func getProjects() -> [ProjectUser] {
+        return self.currentUser!.projects_users.filter { $0.cursus_ids.contains(self.getCursus().cursus.id)
+        }
     }
     
     // FETCH FROM API
     
     func fetchUserFromApi(login: String) async throws -> User {
-        let endpoint =  "\(self.apiUrl)/users?filter[login]=\(login)"
-        let result: [User] = try await APIManager.shared.request(endpoint: endpoint, method: "GET", parameters: nil)
-        if (result.isEmpty) {
-            throw CustomError.runtimeError("No user found.")
-        }
-        self.currentUser = result[0]
-        return result[0]
+        let endpoint =  "\(self.apiUrl)/users/\(login)"
+        let result: User = try await APIManager.shared.request(endpoint: endpoint, method: "GET", parameters: nil)
+        self.currentUser = result
+        return result
     }
     
     func fetchUserCoalitionFromApi() async throws -> Coalition {
@@ -69,22 +62,5 @@ class UsersService {
         }
         self.coalition = result.count == 2 ? result[1] : result[0]
         return self.coalition!
-    }
-    
-    func fetchCursusInfoFromApi() async throws -> UserCursus {
-        let endpoint =  "\(self.apiUrl)/users/\(currentUser?.id ?? -1)/cursus_users/"
-        let result: [UserCursus] = try await APIManager.shared.request(endpoint: endpoint, method: "GET", parameters: nil)
-        if (result.isEmpty) {
-            throw CustomError.runtimeError("No cursus found.")
-        }
-        self.cursus = result[0]
-        return result[0]
-    }
-    
-    func fetchProjectsFromApi() async throws -> [ProjectEvaluation] {
-        let endpoint =  "\(self.apiUrl)/users/\(currentUser?.id ?? -1)/projects_users/"
-        let result: [ProjectEvaluation] = try await APIManager.shared.request(endpoint: endpoint, method: "GET", parameters: nil)
-        self.projects = result
-        return result
     }
 }
