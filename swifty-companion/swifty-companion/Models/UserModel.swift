@@ -21,8 +21,8 @@ struct User: Codable {
     let kind: String
     let image: UserImage
     let correction_point: Int
-    let pool_month: String
-    let pool_year: String
+    let pool_month: String?
+    let pool_year: String?
     let location: String?
     let wallet: Int
     let anonymize_date: String
@@ -31,7 +31,7 @@ struct User: Codable {
     let updated_at: String
     let alumnized_at: String?
     let cursus_users: [CursusUser]
-    let projects_users: [ProjectUser]
+    let projects_users: [ProjectUser]?
 }
 
 struct UserImage: Codable {
@@ -81,7 +81,7 @@ struct ProjectUser: Codable {
     let final_mark: Int?
     let status: String
     let validated: Bool?
-    let current_team_id: Int
+    let current_team_id: Int?
     let project: Project
     let cursus_ids: [Int]
     let marked_at: String?

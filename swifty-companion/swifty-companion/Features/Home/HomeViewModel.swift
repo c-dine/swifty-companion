@@ -34,7 +34,7 @@ class HomeViewModel: ObservableObject {
             if (login.isEmpty) {
                 return false
             }
-            let _ = try await UsersService.shared.initAll(login: login.lowercased())
+            let _ = try await UsersService.shared.initAll(login: login.lowercased().replacingOccurrences(of: " ", with: ""))
             return true
         } catch {
             print(error)

@@ -41,8 +41,8 @@ class UsersService {
     }
     
     func getProjects() -> [ProjectUser] {
-        return self.currentUser!.projects_users.filter { $0.cursus_ids.contains(self.getCursus().cursus.id)
-        }
+        return self.currentUser?.projects_users?.filter { $0.cursus_ids.contains(self.getCursus().cursus.id)
+        } ?? []
     }
     
     // FETCH FROM API

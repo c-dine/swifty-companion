@@ -50,15 +50,29 @@ struct UserDetailsView: View {
                     }
                 }
                 
-                TabView {
-                    ProjectsListView(projects: userDetailsViewModel.getProjects())
-                        .tag(0)
-                    SkillsListView(cursus: userDetailsViewModel.getCursus())
-                        .tag(1)
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                .onAppear {
-                  setupAppearance()
+                if (userDetailsViewModel.getProjects().count != 0) {
+                    TabView {
+                        ProjectsListView(projects: userDetailsViewModel.getProjects())
+                            .tag(0)
+                        SkillsListView(cursus: userDetailsViewModel.getCursus())
+                            .tag(1)
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    .onAppear {
+                        setupAppearance()
+                    }
+                } else {
+                    GeometryReader { geometry in
+                        ZStack(alignment: .center) {
+                            Rectangle()
+                                .frame(width: geometry.size.width, height: geometry.size.height)
+                                .foregroundColor(.white)
+                            Text("No projects.")
+                                .font(.title2)
+                                .italic()
+                                .foregroundStyle(.gray)
+                        }
+                    }
                 }
             }
             

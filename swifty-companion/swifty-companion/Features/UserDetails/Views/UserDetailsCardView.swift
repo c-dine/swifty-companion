@@ -28,7 +28,9 @@ struct UserDetailsCardView: View {
                     Image(systemName: "mappin.and.ellipse")
                     Image(systemName: "envelope.fill")
                     Image(systemName: "australsign")
-                    Image(systemName: "figure.pool.swim")
+                    if (currentUser.pool_month != nil) {
+                        Image(systemName: "figure.pool.swim")
+                    }
                 }
                 .foregroundStyle(Color(hex: coalition.color))
 
@@ -36,7 +38,9 @@ struct UserDetailsCardView: View {
                     Text(currentUser.location ?? "Unavailable")
                     Text(currentUser.email)
                     Text("\(currentUser.wallet)")
-                    Text("\(currentUser.pool_month) \(currentUser.pool_year)")
+                    if (currentUser.pool_month != nil) {
+                        Text("\(currentUser.pool_month ?? "") \(currentUser.pool_year ?? "")")
+                    }
                 }
                 .foregroundStyle(.white)
             }
